@@ -147,4 +147,9 @@ async def root():
 
 # Main function to run the FastAPI app
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=int(os.environ.get("PORT",8000)))
+    # Get the PORT environment variable (Render sets this dynamically)
+    port = int(os.environ.get("PORT", 8000))  # Default to 8000 if PORT is not set
+    # Log the port to verify it's being correctly set
+    print(f"Running FastAPI app on port {port}")  # Log the port value to check
+    # Run the app with the correct host and port
+    uvicorn.run(app, host="0.0.0.0", port=port)
